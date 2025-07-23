@@ -1,0 +1,15 @@
+node_modules/
+frontend/public/
+*.glb
+*.gltf
+*.obj
+*.mp3
+*.wav
+*.mp4
+*.jpg
+*.jpeg
+*.png
+*.webp
+*.ico
+.DS_Store
+.env 
