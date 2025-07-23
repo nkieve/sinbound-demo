@@ -167,6 +167,133 @@ function MetaballsLine({ height = '92vh' }) {
   );
 }
 
+function CarouselItem({ item, i, current, hovered, big, setHovered, N, radius }) {
+  const angle = (2 * Math.PI / N) * i;
+  const x = Math.sin(angle) * radius;
+  const z = Math.cos(angle) * radius;
+  const y = 0;
+  const isActive = i === current;
+  const isHovered = hovered === i;
+  const t = Date.now() / 1000 + i * 0.5;
+  const breathingGlow = 0.7 + 0.3 * Math.sin(t);
+  let baseGlowColor = i % 2 === 0 ? `hsl(${180 + 10 * Math.sin(t)},100%,60%)` : `hsl(${50 + 10 * Math.sin(t)},100%,60%)`;
+  let contrastGlowColor = i % 2 === 0 ? `hsl(${320 + 10 * Math.sin(t)},100%,60%)` : `hsl(${200 + 10 * Math.sin(t)},100%,60%)`;
+  const glowColor = isActive && isHovered ? contrastGlowColor : baseGlowColor;
+  const shadowColor = isActive || isHovered ? baseGlowColor : '#333';
+  const { scale, emissiveIntensity } = useSpring({
+    scale: isHovered
+      ? (big ? 1.75 : 1.55)
+      : isActive
+      ? (big ? 1.65 : 1.45) + 0.05 * Math.sin(Date.now() / 200)
+      : 1,
+    emissiveIntensity: (isActive || isHovered ? 1.2 : 0.5) * breathingGlow,
+    config: { mass: 1, tension: 170, friction: 18 },
+  });
+  // Determine if this item is on the back side of the cylinder
+  const isBack = Math.abs(((angle * 180) / Math.PI + 360) % 360) > 90 && Math.abs(((angle * 180) / Math.PI + 360) % 360) < 270;
+  // Animated scale and glow for active/hovered item, plus breathing
+  // Animated drift for active item
+  // Remove driftRef for main position, always use [x, y, z]
+  // For a 6-item carousel, flip text for the back-facing container (i === 3)
+  const isFlipped = i === 3;
+  return (
+    <group key={i} position={[x, y, z]} rotation={[0, -angle, 0]}>
+      {/* Large invisible hover area in front of the container */}
+      <mesh
+        position={[0, 0, 0.5]}
+        onPointerOver={() => setHovered(i)}
+        onPointerOut={() => setHovered(null)}
+      >
+        <planeGeometry args={[big ? 6.5 : 4.5, big ? 4.2 : 3.2]} />
+        <meshBasicMaterial transparent opacity={0} />
+      </mesh>
+      <animated.mesh
+        scale={scale.to(s => [s, s, s])}
+        castShadow
+        receiveShadow
+      >
+        <RoundedBox args={[big ? 4.8 : 3.0, big ? 3.0 : 2.1, big ? 0.62 : 0.44]} radius={big ? 0.48 : 0.30} smoothness={6} edges={{ color: glowColor, thickness: big ? 2.2 : 1.2 }}>
+          {/* Confined inner glow rounded rectangle */}
+          <RoundedBox args={[big ? 3.6 : 2.4, big ? 1.88 : 1.28, big ? 0.17 : 0.08]} radius={big ? 0.48 : 0.30} smoothness={5} position={[0, 0, big ? 0.30 : 0.21]}>
+            <meshPhysicalMaterial
+              color={glowColor}
+              emissive={glowColor}
+              emissiveIntensity={1.7 * breathingGlow}
+              opacity={0.38}
+              transparent
+              metalness={0.4}
+              roughness={0.18}
+            />
+          </RoundedBox>
+          {/* Inner solid glow sheen */}
+          <mesh position={[0, 0, big ? 0.46 : 0.36]}>
+            <planeGeometry args={[big ? 6.0 : 4.2, big ? 3.6 : 2.7]} />
+            <meshBasicMaterial color={glowColor} opacity={isActive || isHovered ? 0.48 : 0.28} transparent />
+          </mesh>
+          <animated.meshPhysicalMaterial
+            color={'#fff'}
+            emissive={isActive || isHovered ? glowColor : '#6cf'}
+            emissiveIntensity={emissiveIntensity.to(e => e * 1.7)}
+            opacity={0.95}
+            transparent
+            clearcoat={1}
+            clearcoatRoughness={0.15}
+            reflectivity={0.85}
+            metalness={0.2}
+          />
+          <shadowMaterial attach="material" opacity={0.35} />
+        </RoundedBox>
+      </animated.mesh>
+      {/* Image as texture overlay */}
+      <Html center style={{ pointerEvents: 'auto', width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center' }}
+        rotation={[0, -angle, 0]}
+        transform={`skewY(${Math.sin(angle) * 6}deg) rotateZ(${angle * 8 / Math.PI}deg)`}
+      >
+        <a href={item.link} style={{ textDecoration: 'none', color: '#fff', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+          <img src={item.img} alt={item.title} style={{
+            width: big ? 195 : 125,
+            height: big ? 138 : 83,
+            borderRadius: 12,
+            boxShadow: isActive || isHovered ? `0 0 0 ${big ? 8 : 4}px ${shadowColor}` : `0 0 0 ${big ? 4 : 2}px #333`,
+            marginBottom: 12,
+            opacity: isActive ? 1 : 0.7,
+            filter: isActive || isHovered ? 'grayscale(10%)' : 'grayscale(30%) blur(1px)',
+            transform: `skewY(${Math.sin(angle) * 6}deg) rotateZ(${angle * 8 / Math.PI}deg)`,
+            transition: 'box-shadow 0.2s, filter 0.2s',
+            display: 'block',
+            marginLeft: 'auto',
+            marginRight: 'auto',
+          }} />
+          <div style={{
+            fontWeight: 'bold',
+            fontSize: big ? '1.7em' : '1.1em',
+            color: isBack ? '#fff' : (isActive || isHovered ? '#fff' : (i % 2 === 0 ? '#ff4fa3' : '#00fff7')),
+            textShadow: isActive || isHovered ? `0 0 2px #000, 0 0 8px #fff` : `0 0 2px ${baseGlowColor}`,
+            filter: `${isActive || isHovered ? 'none' : 'blur(0.5px)'} contrast(1.2) invert(1)`,
+            transform: item.title === 'SensationalX Furry Night' ? 'scaleX(-1)' : (isFlipped ? 'scaleX(-1)' : undefined),
+            transition: 'filter 0.2s',
+            textAlign: 'center',
+            margin: '0 auto',
+            width: '100%',
+            lineHeight: 1.2,
+          }}>{item.title}</div>
+          <div style={{
+            fontSize: big ? '1.2em' : '0.9em',
+            color: isBack ? '#fff' : '#aaa',
+            filter: 'invert(1) contrast(1.2)',
+            transition: 'filter 0.2s',
+            transform: item.title === 'SensationalX Furry Night' ? 'scaleX(-1)' : (isFlipped ? 'scaleX(-1)' : undefined),
+            textAlign: 'center',
+            margin: '0 auto',
+            width: '100%',
+            lineHeight: 1.2,
+          }}>{item.desc}</div>
+        </a>
+      </Html>
+    </group>
+  );
+}
+
 function Carousel3D({ current, hovered, setHovered, big, items, onItemClick }) {
   // Make the cylinder axis smaller for a more compact carousel
   const baseRadius = big ? 10 : 6;
@@ -219,134 +346,19 @@ function Carousel3D({ current, hovered, setHovered, big, items, onItemClick }) {
   if (!items || items.length === 0) return null;
   return (
     <animated.group ref={groupRef} position={[0, 0, 0]} rotation-y={rotationY}>
-      {items.map((item, i) => {
-        const angle = (2 * Math.PI / N) * i;
-        const x = Math.sin(angle) * radius;
-        const z = Math.cos(angle) * radius;
-        const y = 0; // All items at same height
-        const isActive = i === current;
-        const isHovered = hovered === i;
-        // Animated breathing glow
-        const t = Date.now() / 1000 + i * 0.5;
-        const breathingGlow = 0.7 + 0.3 * Math.sin(t); // 0.4 to 1.0
-        // Alternate glow color: even = cyan, odd = yellow, with breathing hue shift
-        let baseGlowColor = i % 2 === 0 ? `hsl(${180 + 10 * Math.sin(t)},100%,60%)` : `hsl(${50 + 10 * Math.sin(t)},100%,60%)`;
-        let contrastGlowColor = i % 2 === 0 ? `hsl(${320 + 10 * Math.sin(t)},100%,60%)` : `hsl(${200 + 10 * Math.sin(t)},100%,60%)`;
-        const glowColor = isActive && isHovered ? contrastGlowColor : baseGlowColor;
-        const shadowColor = isActive || isHovered ? baseGlowColor : '#333';
-        // Determine if this item is on the back side of the cylinder
-        const isBack = Math.abs(((angle * 180) / Math.PI + 360) % 360) > 90 && Math.abs(((angle * 180) / Math.PI + 360) % 360) < 270;
-        // Animated scale and glow for active/hovered item, plus breathing
-        const { scale, emissiveIntensity } = useSpring({
-          scale: isHovered
-            ? (big ? 1.75 : 1.55)
-            : isActive
-            ? (big ? 1.65 : 1.45) + 0.05 * Math.sin(Date.now() / 200)
-            : 1,
-          emissiveIntensity: (isActive || isHovered ? 1.2 : 0.5) * breathingGlow,
-          config: { mass: 1, tension: 170, friction: 18 },
-        });
-        // Animated drift for active item
-        // Remove driftRef for main position, always use [x, y, z]
-        // For a 6-item carousel, flip text for the back-facing container (i === 3)
-        const isFlipped = i === 3;
-        return (
-          <group key={i} position={[x, y, z]} rotation={[0, -angle, 0]}>
-            {/* Large invisible hover area in front of the container */}
-            <mesh
-              position={[0, 0, 0.5]}
-              onPointerOver={() => setHovered(i)}
-              onPointerOut={() => setHovered(null)}
-            >
-              <planeGeometry args={[big ? 6.5 : 4.5, big ? 4.2 : 3.2]} />
-              <meshBasicMaterial transparent opacity={0} />
-            </mesh>
-            <animated.mesh
-              scale={scale.to(s => [s, s, s])}
-              castShadow
-              receiveShadow
-            >
-              <RoundedBox args={[big ? 4.8 : 3.0, big ? 3.0 : 2.1, big ? 0.62 : 0.44]} radius={big ? 0.48 : 0.30} smoothness={6} edges={{ color: glowColor, thickness: big ? 2.2 : 1.2 }}>
-                {/* Confined inner glow rounded rectangle */}
-                <RoundedBox args={[big ? 3.6 : 2.4, big ? 1.88 : 1.28, big ? 0.17 : 0.08]} radius={big ? 0.48 : 0.30} smoothness={5} position={[0, 0, big ? 0.30 : 0.21]}>
-                  <meshPhysicalMaterial
-                    color={glowColor}
-                    emissive={glowColor}
-                    emissiveIntensity={1.7 * breathingGlow}
-                    opacity={0.38}
-                    transparent
-                    metalness={0.4}
-                    roughness={0.18}
-                  />
-                </RoundedBox>
-                {/* Inner solid glow sheen */}
-                <mesh position={[0, 0, big ? 0.46 : 0.36]}>
-                  <planeGeometry args={[big ? 6.0 : 4.2, big ? 3.6 : 2.7]} />
-                  <meshBasicMaterial color={glowColor} opacity={isActive || isHovered ? 0.48 : 0.28} transparent />
-                </mesh>
-                <animated.meshPhysicalMaterial
-                  color={'#fff'}
-                  emissive={isActive || isHovered ? glowColor : '#6cf'}
-                  emissiveIntensity={emissiveIntensity.to(e => e * 1.7)}
-                  opacity={0.95}
-                  transparent
-                  clearcoat={1}
-                  clearcoatRoughness={0.15}
-                  reflectivity={0.85}
-                  metalness={0.2}
-                />
-                <shadowMaterial attach="material" opacity={0.35} />
-              </RoundedBox>
-            </animated.mesh>
-            {/* Image as texture overlay */}
-            <Html center style={{ pointerEvents: 'auto', width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center' }}
-              rotation={[0, -angle, 0]}
-              transform={`skewY(${Math.sin(angle) * 6}deg) rotateZ(${angle * 8 / Math.PI}deg)`}
-            >
-              <a href={item.link} style={{ textDecoration: 'none', color: '#fff', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-                <img src={item.img} alt={item.title} style={{
-                  width: big ? 195 : 125,
-                  height: big ? 138 : 83,
-                  borderRadius: 12,
-                  boxShadow: isActive || isHovered ? `0 0 0 ${big ? 8 : 4}px ${shadowColor}` : `0 0 0 ${big ? 4 : 2}px #333`,
-                  marginBottom: 12,
-                  opacity: isActive ? 1 : 0.7,
-                  filter: isActive || isHovered ? 'grayscale(10%)' : 'grayscale(30%) blur(1px)',
-                  transform: `skewY(${Math.sin(angle) * 6}deg) rotateZ(${angle * 8 / Math.PI}deg)`,
-                  transition: 'box-shadow 0.2s, filter 0.2s',
-                  display: 'block',
-                  marginLeft: 'auto',
-                  marginRight: 'auto',
-                }} />
-                <div style={{
-                  fontWeight: 'bold',
-                  fontSize: big ? '1.7em' : '1.1em',
-                  color: isBack ? '#fff' : (isActive || isHovered ? '#fff' : (i % 2 === 0 ? '#ff4fa3' : '#00fff7')),
-                  textShadow: isActive || isHovered ? `0 0 2px #000, 0 0 8px #fff` : `0 0 2px ${baseGlowColor}`,
-                  filter: `${isActive || isHovered ? 'none' : 'blur(0.5px)'} contrast(1.2) invert(1)`,
-                  transform: item.title === 'SensationalX Furry Night' ? 'scaleX(-1)' : (isFlipped ? 'scaleX(-1)' : undefined),
-                  transition: 'filter 0.2s',
-                  textAlign: 'center',
-                  margin: '0 auto',
-                  width: '100%',
-                  lineHeight: 1.2,
-                }}>{item.title}</div>
-                <div style={{
-                  fontSize: big ? '1.2em' : '0.9em',
-                  color: isBack ? '#fff' : '#aaa',
-                  filter: 'invert(1) contrast(1.2)',
-                  transition: 'filter 0.2s',
-                  transform: item.title === 'SensationalX Furry Night' ? 'scaleX(-1)' : (isFlipped ? 'scaleX(-1)' : undefined),
-                  textAlign: 'center',
-                  margin: '0 auto',
-                  width: '100%',
-                  lineHeight: 1.2,
-                }}>{item.desc}</div>
-              </a>
-            </Html>
-          </group>
-        );
-      })}
+      {items.map((item, i) => (
+        <CarouselItem
+          key={i}
+          item={item}
+          i={i}
+          current={current}
+          hovered={hovered}
+          big={big}
+          setHovered={setHovered}
+          N={N}
+          radius={radius}
+        />
+      ))}
     </animated.group>
   );
 }
