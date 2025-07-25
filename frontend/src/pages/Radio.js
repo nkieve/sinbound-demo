@@ -708,7 +708,7 @@ loop: true,
         {/* Hidden background audio and SFX */}
         <audio
           ref={audioRef}
-          src={process.env.PUBLIC_URL + '/birkin loop.wav'}
+          src={'https://sinbound.online.s3.amazonaws.com/public/birkin loop.wav'}
           preload="auto"
           loop
           muted
