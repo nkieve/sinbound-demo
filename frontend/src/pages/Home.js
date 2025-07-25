@@ -281,7 +281,7 @@ export default function Home({ cameraState, musicLevel, isHome, resumeAudioConte
       )}
       {/* Removed the <audio> element from Home.js; only use the global one in App.js */}
       <div style={centerContainerStyle}>
-        <img ref={logoRef} src={process.env.PUBLIC_URL + 'https://sinbound.online.s3.amazonaws.com/public/logo_asset.png'} alt="logo" style={logoStyle} />
+        <img ref={logoRef} src={'https://sinbound.online.s3.amazonaws.com/public/logo_asset.png'} alt="logo" style={logoStyle} />
         <div style={menuContainerStyle}>
           <button
             style={imgButtonStyle}
@@ -290,8 +290,8 @@ export default function Home({ cameraState, musicLevel, isHome, resumeAudioConte
             onMouseLeave={() => setHovered(h => ({ ...h, radio: false }))}
             onClick={() => (window.location.href = '/radio')}
           >
-            <img src={process.env.PUBLIC_URL + 'https://sinbound.online.s3.amazonaws.com/public/radio-default.png'} alt="Radio" style={{ ...imgStyle, zIndex: 1, opacity: hovered.radio ? 0 : 1 }} className="default-img" />
-            <img src={process.env.PUBLIC_URL + 'https://sinbound.online.s3.amazonaws.com/public/radio-hover.png'} alt="Radio Hover" style={{ ...imgStyle, zIndex: 2, opacity: hovered.radio ? 1 : 0 }} className="hover-img" />
+            <img src={'https://sinbound.online.s3.amazonaws.com/public/radio-default.png'} alt="Radio" style={{ ...imgStyle, zIndex: 1, opacity: hovered.radio ? 0 : 1 }} className="default-img" />
+            <img src={'https://sinbound.online.s3.amazonaws.com/public/radio-hover.png'} alt="Radio Hover" style={{ ...imgStyle, zIndex: 2, opacity: hovered.radio ? 1 : 0 }} className="hover-img" />
           </button>
           <button
             style={imgButtonStyle}
@@ -300,8 +300,8 @@ export default function Home({ cameraState, musicLevel, isHome, resumeAudioConte
             onMouseLeave={() => setHovered(h => ({ ...h, about: false }))}
             onClick={() => (window.location.href = '/about')}
           >
-            <img src={process.env.PUBLIC_URL + 'https://sinbound.online.s3.amazonaws.com/public/about-default.png'} alt="About" style={{ ...imgStyle, zIndex: 1, opacity: hovered.about ? 0 : 1 }} className="default-img" />
-            <img src={process.env.PUBLIC_URL + 'https://sinbound.online.s3.amazonaws.com/public/about-hover.png'} alt="About Hover" style={{ ...imgStyle, zIndex: 2, opacity: hovered.about ? 1 : 0 }} className="hover-img" />
+            <img src={'https://sinbound.online.s3.amazonaws.com/public/about-default.png'} alt="About" style={{ ...imgStyle, zIndex: 1, opacity: hovered.about ? 0 : 1 }} className="default-img" />
+            <img src={'https://sinbound.online.s3.amazonaws.com/public/about-hover.png'} alt="About Hover" style={{ ...imgStyle, zIndex: 2, opacity: hovered.about ? 1 : 0 }} className="hover-img" />
           </button>
           <button
             style={imgButtonStyle}
@@ -310,15 +310,15 @@ export default function Home({ cameraState, musicLevel, isHome, resumeAudioConte
             onMouseLeave={() => setHovered(h => ({ ...h, archive: false }))}
             onClick={() => (window.location.href = '/archive')}
           >
-            <img src={process.env.PUBLIC_URL + 'https://sinbound.online.s3.amazonaws.com/public/archive-default.png'} alt="Archive" style={{ ...imgStyle, zIndex: 1, opacity: hovered.archive ? 0 : 1 }} className="default-img" />
-            <img src={process.env.PUBLIC_URL + 'https://sinbound.online.s3.amazonaws.com/public/archive-hover.png'} alt="Archive Hover" style={{ ...imgStyle, zIndex: 2, opacity: hovered.archive ? 1 : 0 }} className="hover-img" />
+            <img src={'https://sinbound.online.s3.amazonaws.com/public/archive-default.png'} alt="Archive" style={{ ...imgStyle, zIndex: 1, opacity: hovered.archive ? 0 : 1 }} className="default-img" />
+            <img src={'https://sinbound.online.s3.amazonaws.com/public/archive-hover.png'} alt="Archive Hover" style={{ ...imgStyle, zIndex: 2, opacity: hovered.archive ? 1 : 0 }} className="hover-img" />
           </button>
         </div>
         {musicControls}
       </div>
       {/* Divider and footer at the bottom */}
       <div style={{ position: 'fixed', left: 0, bottom: 60, width: '100vw', textAlign: 'center', zIndex: 2 }}>
-        <img src={process.env.PUBLIC_URL + 'https://sinbound.online.s3.amazonaws.com/public/divider.png'} alt="divider" style={dividerStyle} />
+        <img src={'https://sinbound.online.s3.amazonaws.com/public/divider.png'} alt="divider" style={dividerStyle} />
       </div>
       <footer style={{ ...footerStyle, position: 'fixed', left: 0, bottom: 0, width: '100vw', zIndex: 2, background: 'rgba(0,0,0,0.7)' }}>
         <a href="https://instagram.com/sinbound.soc" target="_blank" style={footerLinkStyle}>instagram</a>

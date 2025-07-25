@@ -55,7 +55,7 @@ export default function Archive({ cameraState }) {
   }
 
   useEffect(() => {
-    fetch(process.env.PUBLIC_URL + 'https://sinbound.online.s3.amazonaws.com/public/songdatabase.json')
+    fetch('https://sinbound.online.s3.amazonaws.com/public/songdatabase.json')
       .then(res => res.json())
       .then((data) => {
         const mixId = getMixParam();
@@ -83,7 +83,7 @@ export default function Archive({ cameraState }) {
     <>
       <div style={overlayStyle}>
         <a href="/" style={{display:'inline-block',marginBottom:10,color:'#6cf',textDecoration:'underline',fontSize:'1.1em'}}>← Return to Home</a>
-        <img src={process.env.PUBLIC_URL + 'https://sinbound.online.s3.amazonaws.com/public/logo_asset.png'} alt="logo" style={logoStyle} />
+        <img src={'https://sinbound.online.s3.amazonaws.com/public/logo_asset.png'} alt="logo" style={logoStyle} />
         <h2 style={{margin: 0, color: '#6cf'}}>Track Archive</h2>
         <div style={{margin: '40px auto', width: '100%', maxWidth: 700, minHeight: 200, background: 'rgba(0,0,0,0.3)', borderRadius: 12, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', fontSize: '1.2em', color: '#fff', pointerEvents: 'auto'}}>
           <h3 style={{color:'#6cf', marginBottom: 10}}>Track Library</h3>
@@ -102,7 +102,7 @@ export default function Archive({ cameraState }) {
         </div>
       </div>
       <div style={{ width: '100%', textAlign: 'center', margin: '40px 0 0 0' }}>
-        <img src={process.env.PUBLIC_URL + 'https://sinbound.online.s3.amazonaws.com/public/divider.png'} alt="divider" style={dividerStyle} />
+        <img src={'https://sinbound.online.s3.amazonaws.com/public/divider.png'} alt="divider" style={dividerStyle} />
       </div>
       <footer style={footerStyle}>
         <a href="https://instagram.com/sinbound.soc" target="_blank" style={footerLinkStyle}>instagram</a>

@@ -635,7 +635,9 @@ loop: true,
 
   // Fetch the JSON data on mount
   useEffect(() => {
-    fetch(process.env.PUBLIC_URL + 'https://sinbound.online.s3.amazonaws.com/public/songdatabase.json')
+   //  fetch('https://sinbound.online.s3.amazonaws.com/public/songdatabase.json')
+    fetch('https://sinbound.online.s3.amazonaws.com/public/songdatabase.json')
+
       .then(res => res.json())
       .then(data => {
         const finalArray = data.map(song => ({
@@ -714,7 +716,7 @@ loop: true,
         />
         <audio
           ref={sfxRef}
-          src={process.env.PUBLIC_URL + 'https://sinbound.online.s3.amazonaws.com/public/sfx001.wav'}
+          src={'https://sinbound.online.s3.amazonaws.com/public/sfx001.wav'}
           preload="auto"
           style={{ display: 'none' }}
         />

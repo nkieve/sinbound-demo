@@ -38,7 +38,7 @@ function App() {
       <Router>
         <Neon3DGrids ref={neonGridsRef} onCameraStateChange={setCameraState} onMusicLevelChange={setMusicLevel} />
         <Home cameraState={cameraState} musicLevel={musicLevel} isHome={true} resumeAudioContext={neonGridsRef} />
-        <audio id="page-transition-sfx" src={process.env.PUBLIC_URL + 'https://sinbound.online.s3.amazonaws.com/public/sfx090.wav'} preload="auto" style={{ display: 'none' }} />
+        <audio id="page-transition-sfx" src={'https://sinbound.online.s3.amazonaws.com/public/sfx090.wav'} preload="auto" style={{ display: 'none' }} />
       </Router>
     );
   }
@@ -55,7 +55,7 @@ function App() {
           <Route path="/trackplayer" element={<TrackPlayer cameraState={cameraState} />} />
         </Routes>
       </Suspense>
-      <audio id="page-transition-sfx" src={process.env.PUBLIC_URL + 'https://sinbound.online.s3.amazonaws.com/public/sfx090.wav'} preload="auto" style={{ display: 'none' }} />
+      <audio id="page-transition-sfx" src={'https://sinbound.online.s3.amazonaws.com/public/sfx090.wav'} preload="auto" style={{ display: 'none' }} />
     </Router>
   );
 }

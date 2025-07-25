@@ -46,7 +46,7 @@ export default function About({ cameraState }) {
     <>
       <div style={overlayStyle}>
         <a href="/" style={{display:'inline-block',marginBottom:10,color:'#6cf',textDecoration:'underline',fontSize:'1.1em'}}>← Return to Home</a>
-        <img src={process.env.PUBLIC_URL + 'https://sinbound.online.s3.amazonaws.com/public/logo_asset.png'} alt="logo" style={logoStyle} />
+        <img src={'https://sinbound.online.s3.amazonaws.com/public/logo_asset.png'} alt="logo" style={logoStyle} />
         <h2 style={{margin: 0, color: '#6cf'}}>About</h2>
         <div style={{margin: '140px auto 40px auto', width: '90%', maxWidth: 700, background: '#111', boxShadow: '0px 0px 5px black', padding: '32px 24px', borderRadius: 0, textAlign: 'center', fontFamily: 'inherit'}}>
           <h2 style={{color: '#fff', marginTop: 0, letterSpacing: 2, fontSize: '2rem', textTransform: 'uppercase', textAlign: 'center'}}>SINBOUND.SOC</h2>
@@ -58,7 +58,7 @@ export default function About({ cameraState }) {
         </div>
       </div>
       <div style={{ width: '100%', textAlign: 'center', margin: '40px 0 0 0' }}>
-        <img src={process.env.PUBLIC_URL + 'https://sinbound.online.s3.amazonaws.com/public/divider.png'} alt="divider" style={dividerStyle} />
+        <img src={'https://sinbound.online.s3.amazonaws.com/public/divider.png'} alt="divider" style={dividerStyle} />
       </div>
       <footer style={footerStyle}>
         <a href="https://instagram.com/sinbound.soc" target="_blank" style={footerLinkStyle}>instagram</a>

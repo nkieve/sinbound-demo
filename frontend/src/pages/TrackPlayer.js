@@ -51,7 +51,7 @@ export default function TrackPlayer({ cameraState }) {
   }
 
   useEffect(() => {
-    fetch(process.env.PUBLIC_URL + 'https://sinbound.online.s3.amazonaws.com/public/songdatabase.json')
+    fetch('https://sinbound.online.s3.amazonaws.com/public/songdatabase.json')
       .then(res => res.json())
       .then((data) => {
         const mixId = getMixParam();
@@ -551,7 +551,7 @@ export default function TrackPlayer({ cameraState }) {
         overflow: 'hidden',
       }}>
         {/* Lane main section */}
-        <img src={process.env.PUBLIC_URL + 'https://sinbound.online.s3.amazonaws.com/public/beatmap-element1@2x.png'} style={{position:'absolute',left:'50%',top:'50%',transform:'translate(-50%,-50%)',width:laneWidth,height:laneHeight,zIndex:2,pointerEvents:'none',maxWidth:'90vw'}} alt="lane main" />
+        <img src={'https://sinbound.online.s3.amazonaws.com/public/beatmap-element1@2x.png'} style={{position:'absolute',left:'50%',top:'50%',transform:'translate(-50%,-50%)',width:laneWidth,height:laneHeight,zIndex:2,pointerEvents:'none',maxWidth:'90vw'}} alt="lane main" />
         {/* Falling balls */}
         {balls.map((ball, i) => (
           <div key={i} style={{
@@ -868,13 +868,13 @@ export default function TrackPlayer({ cameraState }) {
       }}>
         <div style={{display:'flex',flexDirection:'row',alignItems:'center',justifyContent:'center',gap:32,marginBottom:18}}>
           <button onClick={handlePrev} style={{background:'none',border:'none',cursor:'pointer',padding:0}}>
-            <img src={process.env.PUBLIC_URL + 'https://sinbound.online.s3.amazonaws.com/public/trackplayer-lasttrackbutton.png'} alt="Prev" style={{height:'2.2em',width:'auto',filter:'drop-shadow(0 0 8px #6cf8)'}} />
+            <img src={'https://sinbound.online.s3.amazonaws.com/public/trackplayer-lasttrackbutton.png'} alt="Prev" style={{height:'2.2em',width:'auto',filter:'drop-shadow(0 0 8px #6cf8)'}} />
           </button>
           <button onClick={isPlaying ? handlePause : handlePlay} style={{background:'none',border:'none',cursor:'pointer',padding:0}}>
             <img src={process.env.PUBLIC_URL + (isPlaying ? 'https://sinbound.online.s3.amazonaws.com/public/trackplayer-pausebutton.png' : 'https://sinbound.online.s3.amazonaws.com/public/trackplayer-playbutton.png')} alt={isPlaying ? 'Pause' : 'Play'} style={{height:'2.2em',width:'auto',filter:'drop-shadow(0 0 8px #ffe14f)'}} />
           </button>
           <button onClick={handleNext} style={{background:'none',border:'none',cursor:'pointer',padding:0}}>
-            <img src={process.env.PUBLIC_URL + 'https://sinbound.online.s3.amazonaws.com/public/trackplayer-nextbutton.png'} alt="Next" style={{height:'2.2em',width:'auto',filter:'drop-shadow(0 0 8px #6cf8)'}} />
+            <img src={'https://sinbound.online.s3.amazonaws.com/public/trackplayer-nextbutton.png'} alt="Next" style={{height:'2.2em',width:'auto',filter:'drop-shadow(0 0 8px #6cf8)'}} />
           </button>
         </div>
         {/* Progress bar */}
