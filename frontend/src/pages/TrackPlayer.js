@@ -64,7 +64,8 @@ export default function TrackPlayer({ cameraState }) {
 
   useEffect(() => {
     if (audioRef.current && tracks.length > 0) {
-      audioRef.current.src = process.env.PUBLIC_URL + '/' + tracks[current].link;
+      // audioRef.current.src = process.env.PUBLIC_URL + '/' + tracks[current].link;
+      audioRef.current.src = getMixParam();
       if (isPlaying) {
         audioRef.current.play();
       } else {
