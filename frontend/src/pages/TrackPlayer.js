@@ -48,7 +48,8 @@ export default function TrackPlayer({ cameraState }) {
   function getMixParam() {
     const params = new URLSearchParams(window.location.search);
     const track = params.get('track');
-    return track ? encodeURIComponent(track) : null;
+    // return track ? encodeURIComponent(track) : null;
+    return track ? track : null;
   }
 
   useEffect(() => {
