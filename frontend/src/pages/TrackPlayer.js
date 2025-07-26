@@ -59,8 +59,10 @@ export default function TrackPlayer({ cameraState }) {
         const mixId = getMixParam();
         if (mixId) {
           // Only show the song with this id
-          const filtered = data.filter(song => String(song.id) === String(mixId));
-          setTracks(filtered);
+          // const filtered = data.filter(song => String(song.id) === String(mixId));
+          // setTracks(filtered);
+          setTracks(data);
+          setCurrent(Number(mixId));
         } else {
           setTracks(data);
         }
