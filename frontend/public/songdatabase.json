@@ -1,0 +1,58 @@
+[
+    {
+        "id": 1,
+        "title": "EMOE MIX 2015",
+        "artist": "EMOEDOLLX",
+        "description": "2015 EMOTIONAL MIX",
+        "coverimage": "https://s3.eu-north-1.amazonaws.com/sinbound.online/public/mix-coverimage/artworks-000045224410-q6gqz1-t500x500.jpg",
+        "link": "https://s3.eu-north-1.amazonaws.com/sinbound.online/public/mix-tracks/Tsukema Tsukeru - Yume Shinya [178514973].mp3"
+    },
+    {
+        "id": 2,
+        "title": "SensationalX Furry Night",
+        "artist": "Paw Print Story",
+        "description": "Sex Trance Fur Gabber",
+        "coverimage": "https://s3.eu-north-1.amazonaws.com/sinbound.online/public/mix-coverimage/Gu-pyf9W8AAPa_k.jpg",
+        "link": "https://s3.eu-north-1.amazonaws.com/sinbound.online/public/mix-tracks/sensationalx.mp3"
+    },
+    {
+        "id": 3,
+        "title": "Furry Night",
+        "artist": "Paw Print Story",
+        "description": "Sex Trance Fur Gabber",
+        "coverimage": "https://s3.eu-north-1.amazonaws.com/sinbound.online/public/mix-coverimage/IMG_4900.jpg",
+        "link": "https://s3.eu-north-1.amazonaws.com/sinbound.online/public/mix-tracks/raw edit mp3.mp3"
+    },
+    {
+        "id": 4,
+        "title": "Song 4",
+        "artist": "Artist 4",
+        "description": "Description 4",
+        "coverimage": "https://s3.eu-north-1.amazonaws.com/sinbound.online/public/mix-coverimage/IMG_7294.jpg",
+        "link": "https://s3.eu-north-1.amazonaws.com/sinbound.online/public/mix-tracks/07 Nico X2 Old Enemy.mp3"
+    },
+    {
+        "id": 5,
+        "title": "Viva Happy Night",
+        "artist": "MORE MORE JUMP!",
+        "description": "Uplifting J-Pop Mix",
+        "coverimage": "https://s3.eu-north-1.amazonaws.com/sinbound.online/public/mix-coverimage/IMG_1002.jpg",
+        "link": "https://s3.eu-north-1.amazonaws.com/sinbound.online/public/mix-tracks/(FULL) Viva Happy by MORE MORE JUMP! [908863858].mp3"
+    },
+    {
+        "id": 6,
+        "title": "ROFL Collab",
+        "artist": "xaxanity, oryx, neio, cuteslit, rylorie, roshyw, & qtae",
+        "description": "Fun collaborative mix",
+        "coverimage": "https://s3.eu-north-1.amazonaws.com/sinbound.online/public/mix-coverimage/Gu1zZmeW4AAb6R5.jpg",
+        "link": "https://s3.eu-north-1.amazonaws.com/sinbound.online/public/mix-tracks/#ROFL w⧸ xaxanity, oryx, neio, cuteslit, rylorie, roshyw, & qtae [993948190].mp3"
+    },
+    {
+        "id": 7,
+        "title": "%date Session",
+        "artist": "Unknown Artist",
+        "description": "Experimental mix session",
+        "coverimage": "https://s3.eu-north-1.amazonaws.com/sinbound.online/public/mix-coverimage/GuzfqUXWsAA3RR7.jpg",
+        "link": "https://s3.eu-north-1.amazonaws.com/sinbound.online/public/mix-tracks/%date [965191930].mp3"
+    }
+]
