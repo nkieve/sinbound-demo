@@ -641,7 +641,7 @@ loop: true,
       .then(res => res.json())
       .then(data => {
         const finalArray = data.map(song => ({
-          img: process.env.PUBLIC_URL + '/mix-coverimage/' + song.coverimage,
+          img: song.coverimage,
           title: song.title,
           desc: song.description,
           link: '/trackplayer?track=' + song.link
