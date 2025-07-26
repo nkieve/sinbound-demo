@@ -571,7 +571,7 @@ loop: true,
   // Handle carousel item clicks
   const handleItemClick = (item) => {
     // Navigate to TrackPlayer with the mixId/category as a parameter
-    window.location.href = `/trackplayer?mix=${item.id}`;
+    window.location.href = `/trackplayer?track=${item.id}`;
   };
   // Define big for use in camera and Carousel3D
   const big = true;
@@ -644,7 +644,7 @@ loop: true,
           img: song.coverimage,
           title: song.title,
           desc: song.description,
-          link: '/trackplayer?track=' + song.link
+          link: '/trackplayer?track=' + song.id
         }));
         setItems(finalArray);
         setLoading(false);

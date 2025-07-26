@@ -53,20 +53,36 @@ export default function TrackPlayer({ cameraState }) {
   }
 
   useEffect(() => {
-    const mix = getMixParam();
-    console.log('mix');
-    console.log(mix);
-    if (mix) {
-      setTracks([mix]);
-    } else {
-      setTracks([]);
-    }
+    fetch(process.env.PUBLIC_URL + 'https://sinbound.online.s3.amazonaws.com/public/songdatabase.json')
+      .then(res => res.json())
+      .then((data) => {
+        const mixId = getMixParam();
+        if (mixId) {
+          // Only show the song with this id
+          const filtered = data.filter(song => String(song.id) === String(mixId));
+          setTracks(filtered);
+        } else {
+          setTracks(data);
+        }
+      })
+      .catch(() => setTracks([]));
   }, []);
+
+  // useEffect(() => {
+  //   const mix = getMixParam();
+  //   console.log('mix');
+  //   console.log(mix);
+  //   if (mix) {
+  //     setTracks([mix]);
+  //   } else {
+  //     setTracks([]);
+  //   }
+  // }, []);
 
   useEffect(() => {
     if (audioRef.current && tracks.length > 0) {
-      // audioRef.current.src = process.env.PUBLIC_URL + '/' + tracks[current].link;
-      audioRef.current.src = getMixParam();
+      audioRef.current.src = tracks[current].link;
+      // audioRef.current.src = getMixParam();
       audioRef.current.crossOrigin = "anonymous";
       if (isPlaying) {
         audioRef.current.play();
@@ -857,7 +873,7 @@ export default function TrackPlayer({ cameraState }) {
         position: 'absolute',
         left: '50%',
         bottom: 48,
-        transform: 'translateX(-50%)',
+        transform: 'translateX(-50%)', 
         zIndex: 30,
         display: 'flex',
         flexDirection: 'column',

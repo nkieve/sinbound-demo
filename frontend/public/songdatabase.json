@@ -4,55 +4,55 @@
         "title": "EMOE MIX 2015",
         "artist": "EMOEDOLLX",
         "description": "2015 EMOTIONAL MIX",
-        "coverimage": "https://s3.eu-north-1.amazonaws.com/sinbound.online/public/mix-coverimage/artworks-000045224410-q6gqz1-t500x500.jpg",
-        "link": "https://s3.eu-north-1.amazonaws.com/sinbound.online/public/mix-tracks/Tsukema%2520Tsukeru%2520-%2520Yume%2520Shinya%2520%5B178514973%5D.mp3"
+        "coverimage": "http://sinbound.online.s3.eu-north-1.amazonaws.com/public/mix-coverimage/artworks-000045224410-q6gqz1-t500x500.jpg",
+        "link": "http://sinbound.online.s3.eu-north-1.amazonaws.com/public/mix-tracks/Tsukema%2520Tsukeru%2520-%2520Yume%2520Shinya%2520%5B178514973%5D.mp3"
     },
     {
         "id": 2,
         "title": "SensationalX Furry Night",
         "artist": "Paw Print Story",
         "description": "Sex Trance Fur Gabber",
-        "coverimage": "https://s3.eu-north-1.amazonaws.com/sinbound.online/public/mix-coverimage/Gu-pyf9W8AAPa_k.jpg",
-        "link": "https://s3.eu-north-1.amazonaws.com/sinbound.online/public/mix-tracks/sensationalx.mp3"
+        "coverimage": "http://sinbound.online.s3.eu-north-1.amazonaws.com/public/mix-coverimage/Gu-pyf9W8AAPa_k.jpg",
+        "link": "http://sinbound.online.s3.eu-north-1.amazonaws.com/public/mix-tracks/sensationalx.mp3"
     },
     {
         "id": 3,
         "title": "Furry Night",
         "artist": "Paw Print Story",
         "description": "Sex Trance Fur Gabber",
-        "coverimage": "https://s3.eu-north-1.amazonaws.com/sinbound.online/public/mix-coverimage/IMG_4900.jpg",
-        "link": "https://s3.eu-north-1.amazonaws.com/sinbound.online/public/mix-tracks/raw%2520edit%2520mp3.mp3"
+        "coverimage": "http://sinbound.online.s3.eu-north-1.amazonaws.com/public/mix-coverimage/IMG_4900.jpg",
+        "link": "http://sinbound.online.s3.eu-north-1.amazonaws.com/public/mix-tracks/raw%2520edit%2520mp3.mp3"
     },
     {
         "id": 4,
         "title": "Song 4",
         "artist": "Artist 4",
         "description": "Description 4",
-        "coverimage": "https://s3.eu-north-1.amazonaws.com/sinbound.online/public/mix-coverimage/IMG_7294.jpg",
-        "link": "https://s3.eu-north-1.amazonaws.com/sinbound.online/public/mix-tracks/07%2520Nico%2520X2%2520Old%2520Enemy.mp3"
+        "coverimage": "http://sinbound.online.s3.eu-north-1.amazonaws.com/public/mix-coverimage/IMG_7294.jpg",
+        "link": "http://sinbound.online.s3.eu-north-1.amazonaws.com/public/mix-tracks/07%2520Nico%2520X2%2520Old%2520Enemy.mp3"
     },
     {
         "id": 5,
         "title": "Viva Happy Night",
         "artist": "MORE MORE JUMP!",
         "description": "Uplifting J-Pop Mix",
-        "coverimage": "https://s3.eu-north-1.amazonaws.com/sinbound.online/public/mix-coverimage/IMG_1002.jpg",
-        "link": "https://s3.eu-north-1.amazonaws.com/sinbound.online/public/mix-tracks/(FULL)%2520Viva%2520Happy%2520by%2520MORE%2520MORE%2520JUMP!%2520%5B908863858%5D.mp3"
+        "coverimage": "http://sinbound.online.s3.eu-north-1.amazonaws.com/public/mix-coverimage/IMG_1002.jpg",
+        "link": "http://sinbound.online.s3.eu-north-1.amazonaws.com/public/mix-tracks/(FULL)%2520Viva%2520Happy%2520by%2520MORE%2520MORE%2520JUMP!%2520%5B908863858%5D.mp3"
     },
     {
         "id": 6,
         "title": "ROFL Collab",
         "artist": "xaxanity, oryx, neio, cuteslit, rylorie, roshyw, & qtae",
         "description": "Fun collaborative mix",
-        "coverimage": "https://s3.eu-north-1.amazonaws.com/sinbound.online/public/mix-coverimage/Gu1zZmeW4AAb6R5.jpg",
-        "link": "https://s3.eu-north-1.amazonaws.com/sinbound.online/public/mix-tracks/#ROFL%20w%E2%A7%B8%20xaxanity,%20oryx,%20neio,%20cuteslit,%20rylorie,%20roshyw,%20&%20qtae%20[993948190].mp3"
+        "coverimage": "http://sinbound.online.s3.eu-north-1.amazonaws.com/public/mix-coverimage/Gu1zZmeW4AAb6R5.jpg",
+        "link": "http://sinbound.online.s3.eu-north-1.amazonaws.com/public/mix-tracks/#ROFL%20w%E2%A7%B8%20xaxanity,%20oryx,%20neio,%20cuteslit,%20rylorie,%20roshyw,%20&%20qtae%20[993948190].mp3"
     },
     {
         "id": 7,
         "title": "%date Session",
         "artist": "Unknown Artist",
         "description": "Experimental mix session",
-        "coverimage": "https://s3.eu-north-1.amazonaws.com/sinbound.online/public/mix-coverimage/GuzfqUXWsAA3RR7.jpg",
-        "link": "https://s3.eu-north-1.amazonaws.com/sinbound.online/public/mix-tracks/%25date%2520%5B965191930%5D.mp3"
+        "coverimage": "http://sinbound.online.s3.eu-north-1.amazonaws.com/public/mix-coverimage/GuzfqUXWsAA3RR7.jpg",
+        "link": "http://sinbound.online.s3.eu-north-1.amazonaws.com/public/mix-tracks/%25date%2520%5B965191930%5D.mp3"
     }
 ]
