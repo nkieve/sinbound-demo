@@ -53,6 +53,8 @@ export default function TrackPlayer({ cameraState }) {
 
   useEffect(() => {
     const mix = getMixParam();
+    console.log('mix');
+    console.log(mix);
     if (mix) {
       setTracks([mix]);
     } else {
