@@ -62,7 +62,7 @@ export default function TrackPlayer({ cameraState }) {
           // const filtered = data.filter(song => String(song.id) === String(mixId));
           // setTracks(filtered);
           setTracks(data);
-          setCurrent(Number(mixId));
+          setCurrent((Number(mixId) - 1) % data.length);
         } else {
           setTracks(data);
         }
