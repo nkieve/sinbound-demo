@@ -67,6 +67,7 @@ export default function TrackPlayer({ cameraState }) {
     if (audioRef.current && tracks.length > 0) {
       // audioRef.current.src = process.env.PUBLIC_URL + '/' + tracks[current].link;
       audioRef.current.src = getMixParam();
+      audioRef.current.crossOrigin = "anonymous";
       if (isPlaying) {
         audioRef.current.play();
       } else {
@@ -691,7 +692,7 @@ export default function TrackPlayer({ cameraState }) {
       border: 'none', // Remove any border
     }}>
       {/* Hidden audio element for playback and reactivity */}
-      <audio ref={audioRef} style={{display:'none'}} />
+      <audio crossOrigin="anonymous" ref={audioRef} style={{display:'none'}} />
       {/* Glowing yellow intro text */}
       {showSpinText && (
         <div style={{
