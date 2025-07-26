@@ -238,7 +238,7 @@ export default function Home({ cameraState, musicLevel, isHome, resumeAudioConte
       >
         <img
           id="music-toggle-img"
-          src={process.env.PUBLIC_URL + (isPlaying ? '/PAUSE AUDIO.png' : '/PLAY AUDIO.png')}
+          src={process.env.PUBLIC_URL + (isPlaying ? 'https://sinbound.online.s3.amazonaws.com/public/PAUSE AUDIO.png' : 'https://sinbound.online.s3.amazonaws.com/public/PLAY AUDIO.png')}
           alt={isPlaying ? 'Pause Music' : 'Play Music'}
           style={{ width: 60, height: 60, display: 'block', pointerEvents: 'none', userSelect: 'none' }}
         />
@@ -258,7 +258,7 @@ export default function Home({ cameraState, musicLevel, isHome, resumeAudioConte
       <audio
         ref={audioRef}
         id="bg-music"
-        src="https://sinbound.online.s3.amazonaws.com/public/tsukihime.mp3"
+        src="tsukihime.mp3"
         loop
         hidden
       />
@@ -281,7 +281,7 @@ export default function Home({ cameraState, musicLevel, isHome, resumeAudioConte
       )}
       {/* Removed the <audio> element from Home.js; only use the global one in App.js */}
       <div style={centerContainerStyle}>
-        <img ref={logoRef} src={'https://sinbound.online.s3.amazonaws.com/public/logo_asset.png'} alt="logo" style={logoStyle} />
+        <img ref={logoRef} src={'logo_asset.png'} alt="logo" style={logoStyle} />
         <div style={menuContainerStyle}>
           <button
             style={imgButtonStyle}
